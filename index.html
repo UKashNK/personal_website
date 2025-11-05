@@ -1,0 +1,43 @@
+<section id="projects" class="bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Projects</h2>
+    <div id="projects-container" class="row g-4"></div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+async function loadProjects() {
+  const container = document.getElementById('projects-container');
+  try {
+    const res = await fetch('projects/index.json');
+    const projects = await res.json();
+
+    for (const proj of projects) {
+      const readmeRes = await fetch(`projects/${proj.dir}/README.md`);
+      const readme = await readmeRes.text();
+      const html = marked.parse(readme.split('\n').slice(0, 5).join('\n')); // preview first few lines
+
+      const card = document.createElement('div');
+      card.className = 'col-md-4';
+      card.innerHTML = `
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${proj.name}</h5>
+            <div class="card-text mb-3">${html}</div>
+            <div class="mt-auto">
+              <a href="projects/${proj.dir}/results.html" class="btn btn-primary me-2">Results</a>
+              <a href="${proj.github}" class="btn btn-outline-dark">GitHub</a>
+            </div>
+          </div>
+        </div>`;
+      container.appendChild(card);
+    }
+  } catch (e) {
+    console.error(e);
+    container.innerHTML = "<p class='text-danger'>Error loading projects.</p>";
+  }
+}
+
+loadProjects();
+</script>
