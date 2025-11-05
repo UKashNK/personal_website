@@ -1,12 +1,17 @@
 [
   {
-    "name": "3D Mapping Drone",
-    "dir": "project1",
-    "github": "https://github.com/you/project1"
+    "name": "Automatic Report Generator",
+    "dir": "Auto_reports_system",
+    "github": "https://github.com/UKashNK/personal_website/tree/main/projects/Auto_reports_system"
   },
   {
-    "name": "Budget Planner",
-    "dir": "project2",
-    "github": "https://github.com/you/project2"
+    "name": "Business KPI Dashboard",
+    "dir": "Business_KPI_dashboard",
+    "github": "https://github.com/UKashNK/personal_website/tree/main/projects/Business_KPI_Dashboard"
+  },
+  {
+    "name": "Credit Default Prediction(Machine Learning)",
+    "dir": "Credit_default_prediction",
+    "github": "https://github.com/UKashNK/personal_website/tree/main/projects/Credit%20Default%20Prediction(Machine%20Learning)"
   }
 ]
