@@ -1,43 +1,149 @@
-<section id="projects" class="bg-light">
-  <div class="container">
-    <h2 class="text-center mb-5">Projects</h2>
-    <div id="projects-container" class="row g-4"></div>
-  </div>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-async function loadProjects() {
-  const container = document.getElementById('projects-container');
-  try {
-    const res = await fetch('projects/index.json');
-    const projects = await res.json();
-
-    for (const proj of projects) {
-      const readmeRes = await fetch(`projects/${proj.dir}/README.md`);
-      const readme = await readmeRes.text();
-      const html = marked.parse(readme.split('\n').slice(0, 5).join('\n')); // preview first few lines
-
-      const card = document.createElement('div');
-      card.className = 'col-md-4';
-      card.innerHTML = `
-        <div class="card h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">${proj.name}</h5>
-            <div class="card-text mb-3">${html}</div>
-            <div class="mt-auto">
-              <a href="projects/${proj.dir}/results.html" class="btn btn-primary me-2">Results</a>
-              <a href="${proj.github}" class="btn btn-outline-dark">GitHub</a>
-            </div>
-          </div>
-        </div>`;
-      container.appendChild(card);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ukasha Katende | Personal Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
     }
-  } catch (e) {
-    console.error(e);
-    container.innerHTML = "<p class='text-danger'>Error loading projects.</p>";
-  }
-}
+    header {
+      background-color: #1a73e8;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0.2rem 0;
+    }
+    header p {
+      margin: 0.2rem 0;
+      font-style: italic;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    section {
+      padding: 1.5rem 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    section:last-child {
+      border-bottom: none;
+    }
+    h2 {
+      color: #1a73e8;
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+    a {
+      color: #2e4159ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .contact-info {
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ukasha Katende</h1>
+    <p>Bachelor of Environmental Data Science</p>
+    <p>Czech University of Life Sciences (CZU)</p>
+    <div class="contact-info">
+      <p> +420 607 847 157 |  <a href="mailto:katendeunkin07@gmail.com">katendeunkin07@gmail.com</a></p>
+      <p> <a href="https://github.com/UKashNK">GitHub</a>
+    </div>
+  </header>
 
-loadProjects();
-</script>
+  <div class="container">
+    <section>
+      <h2>Summary</h2>
+      <p>Analytical and motivated professional pursuing a B.Sc. in Environmental Data Science and ACCA Accounting qualification. Certified in Data Science, Machine Learning, and IBM Data Analytics, with hands-on experience in bookkeeping and IT support. Skilled in data analysis, financial reporting, and technical problem-solving, with a strong interest in Data Science, Finance, and IT roles.</p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <ul>
+        <li>B.Sc. Environmental Data Science - Faculty of Environmental Sciences, CZU (2025-2028)</li>
+        <li>ACCA Accounting (2024-2028)</li>
+        <li>Czech Language Course (A2) - GoStudy (2024-2025)</li>
+        <li>Data Science and Machine Learning - Refactory UG (2024)</li>
+        <li>Matriculation - Kibuli Secondary School, UNEB (2022)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <ul>
+        <li><strong><a href="projects/Business_KPI_Dashboard/README.md">Business KPI Dashboard</a></strong> - Developed an interactive dashboard using Tableau and Python to visualize key performance indicators for a retail business, enabling data-driven decision-making.</li>
+        <li><strong><a href="projects/Environmental_Data_Analysis/README.md">Environmental Data Analysis</a></strong> - Analyzed environmental datasets using R and Python to identify trends in air quality and their correlation with health outcomes.</li>
+        <li><strong><a href="projects/Financial_Report_Automation/README.md">Financial Report Automation</a></strong> - Created automated financial reporting tools using Python and Excel VBA to streamline monthly reporting processes for a small business.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Experience</h2>
+      <ul>
+        <li>
+          <strong>Shammah General Hardware (Kampala) - Bookkeeper</strong> | Jul 2024 - Nov 2024
+          <ul>
+            <li>Maintained financial records, reconciled cash and ledgers, issued invoices, and tracked stock purchases and sales.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Namagabi High School (Kayunga) - IT Support Staff</strong> | Jun 2023 - Feb 2024
+          <ul>
+            <li>Provided IT support, maintained local and cloud records, and assisted staff with database and software systems.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <ul>
+        <li><strong>Programming:</strong> Javascript, Python, R, Dart, SQL</li>
+        <li><strong>Tools & Frameworks:</strong> Power BI, Tableau, Visual Studio, Microsoft Office, IBM Cognos, Streamlit, Git</li>
+        <li><strong>Operating Systems:</strong> Windows, Linux, iOS, Android</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Key Courses Taken</h2>
+      <ul>
+        <li><strong>Data Science:</strong> Introduction to Data Analytics, Python for Data Science & AI, Databases and SQL, R programming, Data Visualization, EDA, Modeling, ETL, Math for Programming</li>
+        <li><strong>Accounting:</strong> Financial Accounting, Management Accounting, Business Law</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <ul>
+        <li><a href="https://coursera.org/verify/professional-cert/4HFF3FV8MSN2">IBM Data Analyst Professional</a></li>
+        <li><a href="#">Data Science and Machine Learning - Refactory UG</a></li>
+        <li><a href="#">IT Essentials (PC Hardware and Software) - Monaco Institute</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <footer style="text-align:center; padding:1rem; color:#777;">
+    Last updated: 2025-11-05
+  </footer>
+</body>
+</html>
