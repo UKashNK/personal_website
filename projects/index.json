@@ -1,0 +1,12 @@
+[
+  {
+    "name": "3D Mapping Drone",
+    "dir": "project1",
+    "github": "https://github.com/you/project1"
+  },
+  {
+    "name": "Budget Planner",
+    "dir": "project2",
+    "github": "https://github.com/you/project2"
+  }
+]
